@@ -5,7 +5,7 @@ app"""
 
 from flask_restful import Resource, Api
 from web_flask.models import NewsArticle
-from web_flask.db_config import db
+#from web_flask.db_config import db
 
 
 class News(Resource):
@@ -16,12 +16,3 @@ class News(Resource):
 def initialize_routes(api):
     api.add_resource(News, '/news/<string:category>')
 
-def news_to_dict(article):
-    return {
-        'title': article.title,
-        'author': article.author,
-        'description': article.description,
-        'url': article.url,
-        'urlToImage': article.image_url,
-        'punlishedAt': article.published_at
-    }

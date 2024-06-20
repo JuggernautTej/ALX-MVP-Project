@@ -1,5 +1,6 @@
 #!usr/bin/python3
-
+"""This script contains the configuration settings
+for accessing the MySQL database and the Flask application"""
 import os
 
 class Config:
