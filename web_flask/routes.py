@@ -1,27 +1,27 @@
 #!/usr/bin/python3
+"""This script defines the route for the Flask RESTful
+app"""
 
-from flask_restful import Resource
-from web_flask.config import api, app
-import mysql.connector
 
-db_host="localhost"
-db_user="mvp_user"
-db_pword="Olujimi1!"
-db_name="tech_news"
+from flask_restful import Resource, Api
+from web_flask.models import NewsArticle
+from web_flask.db_config import db
+
 
 class News(Resource):
-    def get_headline(self):
-        connection = mysql.connector.connect(
-            host=db_host, user=db_user,
-            password=db_pword, database=db_name
-        )
-        if connection.is_connected():
-            cursor = connection.cursor()
-        cursor.execute("SELECT * FROM headline_news_us")
-        news = cursor.fetchall()
-        return {'headlines': news}
+    def get(self, category):
+        articles = NewsArticle.query.filter_by(category=category).all()
+        return {'news': [article.to_dict() for article in articles]}
+    
+def initialize_routes(api):
+    api.add_resource(News, '/news/<string:category>')
 
-api.add_resource(News, '/headlines')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+def news_to_dict(article):
+    return {
+        'title': article.title,
+        'author': article.author,
+        'description': article.description,
+        'url': article.url,
+        'urlToImage': article.image_url,
+        'punlishedAt': article.published_at
+    }

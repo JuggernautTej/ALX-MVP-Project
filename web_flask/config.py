@@ -1,7 +1,9 @@
 #!usr/bin/python3
 
-from flask import Flask
-from flask_restful import Api
+import os
 
-app = Flask(__name__)
-api = Api(app)
+class Config:
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://mvp_user:Olujimi1!@localhost:3306/tech_news'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    NEWS_API_KEY = os.getenv('NEWS_API_KEY', 'f26b66c5c8cd4b8c92b24c71f0bcf4f4')
+    
