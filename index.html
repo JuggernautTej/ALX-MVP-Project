@@ -9,8 +9,8 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
         <!--google font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
 
@@ -20,10 +20,10 @@
 
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" onclick="loadHome()">Home</a></li>
+                <li><a href="#" onclick="loadTesla()">Tesla</a></li>
+                <li><a href="#" onclick="loadApple()">Apple</a></li>
+                <li><a href="#" onclick="loadAbout()">About</a></li>
             </ul>
         </nav>
 
@@ -32,8 +32,12 @@
             <p>Welcome to Tech with Tej</p>
         </section>
 
+        <main id="content">
+        </main>
+
         <footer>
-            <p>&copy; 2021 Tech with Tej</p>
+            <p>&copy; 2024 Tech with Tej</p>
         </footer>
-        <script src="script.js" async defer></script>
-    </body>    
+        <script src="fetch_script.js" async defer></script>
+    </body> 
+    </html>
