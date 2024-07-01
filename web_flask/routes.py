@@ -4,7 +4,7 @@ app"""
 
 
 from flask_restful import Resource, Api
-from web_flask.models import NewsArticle
+from models import NewsArticle
 #from web_flask.db_config import db
 
 

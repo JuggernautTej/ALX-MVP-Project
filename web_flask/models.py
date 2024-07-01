@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This file defines the SQLAlchemy
 models for the news articles"""
-from web_flask.db_config import db
+
+from db_config import db
 from datetime import datetime
 
 

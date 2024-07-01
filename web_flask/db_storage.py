@@ -5,8 +5,8 @@ and stores it in the MySQL databse using SQLAlchemy"""
 
 import requests
 from datetime import datetime
-from web_flask.db_config import db
-from web_flask.models import NewsArticle
+from db_config import db
+from models import NewsArticle
 from flask import current_app as app
 
 def fetch_store_news(category):
