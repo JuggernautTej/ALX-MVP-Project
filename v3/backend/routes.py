@@ -11,7 +11,7 @@ def fetch_news(category):
     url = 'https://newsapi.org/v2/top-headlines' if category == 'technology' else 'https://newsapi.org/v2/everything'
     params = {
         'apiKey': app.config['NEWS_API_KEY'],
-        'pageSize': 10 if category == 'technology' else 5,
+        'pageSize': 10,
         'category': 'technology' if category == 'technology' else None,
         'q': None if category == 'technology' else category,
         'country': 'us' if category == 'technology' else None,
@@ -20,6 +20,7 @@ def fetch_news(category):
         }
     
     response = requests.get(url, params=params)
+    # print(response.status_code())
     return response.json().get('articles', [])
 
 class News(Resource):
@@ -34,6 +35,10 @@ def initialize_static_routes(app):
     @app.route('/')
     def index():
         return send_from_directory('..', 'index.html')
+
+    @app.route('/landing')
+    def landing():
+        return send_from_directory('..', 'landing.html')
     
     @app.route('/<path:path>')
     def static_proxy(path):

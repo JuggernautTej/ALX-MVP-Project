@@ -7,7 +7,7 @@ function loadHome() {
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
-            content.innerHTML = createNewsGrid(data.news, 5);
+            content.innerHTML = createNewsGrid(data.news, 10);
         })
         .catch(error => console.error('Error fetching news:', error));
 }
@@ -26,7 +26,7 @@ function loadApple() {
     fetch('/news/apple')
         .then(response => response.json())
         .then(data => {
-            const content = document.getElementbyId('content');
+            const content = document.getElementById('content');
             content.innerHTML = createNewsGrid(data.news, 10);
         })
         .catch(error => console.error('Error fetching news;', error));
@@ -35,12 +35,14 @@ function loadApple() {
 function loadAbout() {
     const content = document.getElementById('content');
     content.innerHTML = `
-    <div class="about>
+    <div class="about">
         <h2>About</h2>
-        <p>Tech with Tej is a web service that provides the latest technology news, with focus on the most releavant headlines in the tech industry. Als, we provide the latest updates on Tesla and Apple.</p>
+        <p>Tech with Tej is a web service that provides the latest technology news, with focus on the most releavant headlines in the tech industry. Also, we provide the latest updates on Tesla and Apple.</p>
     </div>
     `;
 }
+
+
 
 function createNewsGrid(news, count) {
     const gridContainer = document.createElement('div');
@@ -48,11 +50,20 @@ function createNewsGrid(news, count) {
     news.slice(0, count). forEach(article => {
         const newsItem = document.createElement('div');
         newsItem.className = 'news-item';
+
+        const imageUrl = article.urlToImage ? article.urlToImage : 'images/tech-news.jpg';
+        const title = article.title ? article.title : 'Tech News';
+        const author = article.author ? article.author : 'Friendly Neighborhood Tech Bro';
+        const publishedAt = article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : '2024';
+        const description = article.description ? article.description : 'Writeup unavailable.';
+        const articleUrl = article.url ? article.url : '#';
+
         newsItem.innerHTML = `
-        <img src="${article.urlToImage}" alt="${article.title}">
-        <h2>${article.title}</h2>
-        <p><small>By ${article.author} on ${new Date(article.publishedAt).toLocaleDateString()}</small></p>
-        <a href="${article.url}" target="_blank">Read more</a>
+        <img src="${imageUrl}" alt="${title}">
+        <h2>${title}</h2>
+        <p>${description}</p>
+        <p><small>By ${author} on ${publishedAt}</small></p>
+        <a href="${articleUrl}" target="_blank">Read more</a>
         `;
         gridContainer.appendChild(newsItem);
     });
