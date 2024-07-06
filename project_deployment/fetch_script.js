@@ -1,9 +1,11 @@
+const backendurl = 'https://tech-with-tej.pythonanywhere.com';
+
 document.addEventListener('DOMContentLoaded', () => {
     loadHome();
 });
 
 function loadHome() {
-    fetch('/news/technology')
+    fetch('${backendurl}/news/technology')
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
@@ -13,7 +15,7 @@ function loadHome() {
 }
 
 function loadTesla() {
-    fetch('/news/tesla')
+    fetch('${backendurl}/news/tesla')
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
@@ -23,7 +25,7 @@ function loadTesla() {
 }
 
 function loadApple() {
-    fetch('/news/apple')
+    fetch('${backendurl}/news/apple')
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
@@ -55,7 +57,7 @@ function createNewsGrid(news, count) {
         const title = article.title ? article.title : 'Tech News';
         const author = article.author ? article.author : 'Friendly Neighborhood Tech Bro';
         const publishedAt = article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : '2024';
-        const description = article.description ? article.description : 'Writeup unavailable.';
+        const description = article.description ? article.description : 'Follow the "Read More" link and read the full article.';
         const articleUrl = article.url ? article.url : '#';
 
         newsItem.innerHTML = `

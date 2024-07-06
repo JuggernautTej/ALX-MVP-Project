@@ -178,6 +178,18 @@ hr{
     text-decoration: underline;
 }
 
+.feature-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.feature-item p {
+    font-family: 'Raleway', sans-serif;
+}
+
 /* About Section */
 .about-section {
     padding: 40px 20px;
