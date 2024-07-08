@@ -1,4 +1,4 @@
-const backendurl = 'https://tech-with-tej.pythonanywhere.com';
+const backendurl = 'https://techwithtej.pythonanywhere.com';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadHome();
