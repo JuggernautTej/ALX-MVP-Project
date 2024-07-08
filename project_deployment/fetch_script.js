@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadHome() {
-    fetch('${backendurl}/news/technology')
+    fetch(`${backendurl}/news/technology`)
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
@@ -15,7 +15,7 @@ function loadHome() {
 }
 
 function loadTesla() {
-    fetch('${backendurl}/news/tesla')
+    fetch(`${backendurl}/news/tesla`)
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
@@ -25,7 +25,7 @@ function loadTesla() {
 }
 
 function loadApple() {
-    fetch('${backendurl}/news/apple')
+    fetch(`${backendurl}/news/apple`)
         .then(response => response.json())
         .then(data => {
             const content = document.getElementById('content');
